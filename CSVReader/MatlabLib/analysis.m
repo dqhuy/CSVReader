@@ -68,12 +68,13 @@ for k = 0:K-1
     b(:,k+1) = sum(bi,2); % Tinh cac luong tai nguyen
     a(:,k+2*(k+1)-1:k+2*(k+1)+Ni-2) = bi./GDP; % Tinh cac he so dong gop theo GDP
 end
-a(:,1:3) = a(:,1:3)*1e4;
-
+a(:,1:3) = a(:,1:3)*1e4; %
+kb = [year b];
+ka = [year a];
 filename =  strcat(rootpath,'\DataOutput\KQ_A.csv');
-csvwrite(filename,b,1,1);  % Luu ket qua tinh he so b 
+csvwrite(filename,kb,1,0);  % Luu ket qua tinh he so b 
 filename = strcat(rootpath,'\DataOutput\KQ_B.csv');
-csvwrite(filename,a,1,1);  % Luu ket qua tinh he so a
+csvwrite(filename,ka,1,0);  % Luu ket qua tinh he so a
 
 % Du doan theo mo hinh GM(1,1)
 % Prediction
@@ -86,12 +87,15 @@ for k = 1:N;
     [pdata(:,k),err(k)] = gm11(y(:,k),Np);
 end
 pdata(:,14) = 0;
+year_next = year(length(year)) + [1:Np]';
 pb = pdata(:,1:4);
+kpb = [year_next pb];
 filename = strcat(rootpath,'\DataOutput\DB_B.csv');
-csvwrite(filename,pb,1,1);  % Luu ket qua du bao he so b 
+csvwrite(filename,kpb,1,0);  % Luu ket qua du bao he so b 
 pa = pdata(:,5:end);
+kpa = [year_next pa];
 filename = strcat(rootpath,'\DataOutput\DB_A.csv');
-csvwrite(filename,pa,1,1);  % Luu ket qua du bao he so a 
+csvwrite(filename,kpa,1,0);  % Luu ket qua du bao he so a 
 
 %% Structure optimization of 3 major industries (x1, x2, x3)
 %  f = x1 + x2 + x3
@@ -112,9 +116,9 @@ for k = 1:Ny
     Z(k,:) = -fval; 
     
 end
-pgdp = [xi Z];
+pgdp = [year_next xi Z];
 filename = strcat(rootpath,'\DataOutput\DB_GDP.csv');
-csvwrite(filename,pgdp,1,1);  % Luu ket qua du bao GDP
+csvwrite(filename,pgdp,1,0);  % Luu ket qua du bao GDP
 msg='Done';
 end
 
