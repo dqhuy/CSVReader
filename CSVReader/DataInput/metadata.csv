@@ -2,7 +2,7 @@
 input_gdp.csv,GDP, Chỉ số GDP
 input_hr.csv,Human Resource,
 input_cap.csv,Capital,
-input_enery.csv,Energy,
+input_energy.csv,Energy,
 input_water.csv,Water,
 input_industry.csv,Industry section,
 input_posibility.csv,Posibility
