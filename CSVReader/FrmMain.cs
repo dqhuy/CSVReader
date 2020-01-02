@@ -56,7 +56,7 @@ namespace CSVReader
         {
         }
 
-      
+
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -108,7 +108,7 @@ namespace CSVReader
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            
+
             hideProgressBarStatus();
             FrmWelcome frm = new FrmWelcome();
             OpenForm(frm);
@@ -116,7 +116,14 @@ namespace CSVReader
 
         private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                System.Diagnostics.Process.Start(@"help\help_eia.pdf");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(@"Không tìm thấy file trợ giúp: Help\Help_EIA.pdf");
+            }
         }
 
         private void OpenForm(Form child)

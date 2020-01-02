@@ -44,9 +44,9 @@
             this.label1.ForeColor = System.Drawing.Color.OrangeRed;
             this.label1.Location = new System.Drawing.Point(522, 150);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(403, 30);
+            this.label1.Size = new System.Drawing.Size(414, 30);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Economic Indicators Analysis and Forcast";
+            this.label1.Text = "Economic Indicators Analysis and Forecast";
             // 
             // label2
             // 
